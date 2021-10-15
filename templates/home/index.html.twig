@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ACCUEIL{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        background-image: url("{{ asset('assets/images/village.jpg')}}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 88vh;
+    }
+</style>
+    <div class="wrapper d-flex justify-content-center align-items-center flex-column h-100">
+        <div class='text-content container-fluid m-5'>
+            <div class="title-home">
+                <h1 class=" title-home text-light text-center"> Mediathéque de La Chapelle-Curreaux</h1>
+            </div>
+            <div class="text-center">
+                <button type="button" class="btn text-dark">
+                    <a 
+                    href="{{ path('register')}}"
+                    class="nav-link text-dark " > S'inscrire </a>
+                </button>
+                <button type="button" class=" btn">
+                    <a 
+                    href="{{ path('app_login')}}"
+                    class="nav-link text-dark" > Se connecter </a>
+                </button>
+            </div>
+        </div>
+        <div class="text-center text-light">
+            <p class="h3"><a 
+            {# href="{{path('admin')}}"  #}
+            class='text-light fixed-bottom mb-5'> Accés interne </a></p>
+        </div>
+
+    </div>
+{% endblock %}
