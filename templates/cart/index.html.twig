@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier{% endblock %}
+{% block nav %}
+{% endblock %}
+{% block content %}
+{% if app.user.valid == 0 %} 
+    {{ render('connexion') }}
+{% else %}
+
+<div class="container">
+    <h1>Mon panier </h1>
+    <hr>
+
+    {% if cart|length > 0 %}
+<a href="{{ path('books') }}" class="btn btn-success btn-block"> Revenir au catalogue </a>
+        <table class="table table-hover table-striped ">
+            <thead>
+              <tr>
+                <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quantité</font></font></th>
+                <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Livre</font></font></th>
+                <th scope="col" colspan="3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Auteur</font></font></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for book in cart %}
+                <tr class="table-active my-auto">
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{book.quantity}}</font></font></td>
+                  <th scope="row" ><font style="vertical-align: center;"><font style="vertical-align: center;">{{book.book.name}}</font></font></th>
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{book.book.author}}</font></font></td>
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><img src="/uploads/images/{{book.book.image}}" alt="{{ book.book.name }}" class="img-fluid w-25"></font></font></td>
+                  <td class="my-auto"><font style="vertical-align: center;"><font style="vertical-align:  center;">
+                      <a href="{{ path('delete_to_cart', { 'id' : book.book.id }) }}"class="nav-link text-secondary" ><i class="bi bi-trash h3"></i></a>     
+                  </font></font></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+
+        <div class= "text-end">
+            <p> Nombre de livre : {{ cart|length }} </p> 
+            <a 
+            href="{{ path('borrow') }}"
+             class="btn btn-success btn-block"> Valider mon emprunt </a>
+            <a 
+            href="{{ path('remove_my_cart') }}"
+             class="btn btn-danger btn-block"> Vider le panier </a>
+
+        </div>
+        {# </div> #}
+
+    {% else %}
+        <p>Votre panier est vide</p>
+    {% endif %}
+    {% endif %}
+{% endblock %}
