@@ -16,7 +16,7 @@
                 {# <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retard</font></font></th> #}
                 <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Date d'emprunt</font></font></th>
                 <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Date de retour</font></font></th>
-                <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retour</font></font></th>
+                {# <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retour</font></font></th> #}
                 <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quantité de livre</font></font></th>
                 <th scope="col" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Livre</font></font></th>
               </tr>
@@ -24,14 +24,14 @@
             <tbody>
 
                {% for borrow in borrows %}
-       hello
-              {#  <tr class="table-active">
+              {<tr class="table-active">
                   <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                         {% if borrow.status == 1 %}
+                            <p>En cours</p>
+                         {# {% if borrow.status == 1 %}
                             <p>En cours</p>
                         {% else %}
                             <p>Rendu</p>    
-                        {% endif %}
+                        {% endif %} #}
                   </font></font></th> #}
                   {# <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                         {% if "now"|date('d-m-Y') > borrow.borrowDate|date('d-m-Y')  %}
@@ -40,19 +40,19 @@
                             <p>en retard</p>    
                         {% endif %}
                   </font></font></th> #}
-                  {# <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.createat | date('d/m/y')}}</font></font></th>
+                  <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.createat | date('d/m/y')}}</font></font></th>
                   <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDate | date('d/m/y')}} </font></font></th>
                   <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                
                   </font></font></th>
-                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDetails|length}}</font></font></td>
+                  {# <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDetails|length}}</font></font></td> #}
                   <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                     {% for detail in borrow.borrowDetails %}
                        <p>{{ detail }}</p>
                     {% endfor %}
                   </font></font></td>
 
-                </tr> #}
+                </tr>
               {% endfor %}
             </tbody>
         </table>
