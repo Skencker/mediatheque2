@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+
+{# {% form_theme form 'bootstrap_5_layout.html.twig' %} #}
+
+{% block content %}
+
+    <style>
+        body {
+            background-image: url("{{ asset('assets/images/village.jpg')}}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 88vh;
+        }
+
+        .container {
+            background: #FFFFFF;
+            padding: 20px;
+            margin-top: 100px;
+        
+        }
+    </style> 
+        <div class="container">
+            <form method="post" class='text-dark'>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+
+                <h1 class="h3 mb-3 text-center">Connexion</h1>
+                {# <div class='container'> #}
+                <label for="inputEmail" class="my-2">Votre Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                <label for="inputPassword" class="my-2">Votre Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+                >
+
+                <button class="btn btn-sm btn-info text-light mt-3" type="submit" style = "background:#5C636A">  SE CONNECTER </button>
+                {# </div> #}
+                <hr>
+
+                <p class="text-center">Ou souhaitez-vous <a href="{{ path('register')}}"> créer un compte </a> ? </p> 
+
+                {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+                #}
+            </form>
+        </div>
+{% endblock %}
