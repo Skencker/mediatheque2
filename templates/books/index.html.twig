@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Catalogue{% endblock %}
+{% block nav %}
+{% endblock %}
+{% block content %}
+
+{% if app.user.valid == 0 %} 
+    {{ render('connexion') }}
+{% else %}
+    <div class="container">
+        <div class='row mt-5'>
+            <div class="col-12 col-md-3">
+                <h4> Rechercher </h4>
+                    {{ form_start(form) }}
+                        <div class="row">
+                            {{ form_row(form.string) }}
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-sm-12">
+                                {{ form_row(form.categories) }}
+                            </div>
+                            <div class="col-6 col-sm-12" id="some-custom-id">
+                                {{ form_row(form.genres) }}
+                            </div>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            <div class="col-12 col-md-9">
+                    <div class="row">
+                {% for book in books %}
+                    <div class="col-12 col-sm-7 col-lg-5 col-xl-4">
+                        <div class="book-item">
+                            <div id="card "class="card shadow m-3 text-dark d-flex justify-content-center" >
+                                <img src="/uploads/images/{{book.image}}" alt="{{ book.name }}" class="img-fluid px-5 mx-auto pt-3 w-75">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{book.name}}</h5>
+                                    <p class="card-text">{{book.genre}}</p>
+                                    <div class='d-flex justify-content-around'>
+                                        <a href="{{ path('book', {'slug': book.slug}) }}" class="btn btn-secondary btn-sm">VOIR</a>
+                                        {% if book.status == 1 %} 
+                                            <a class = 'btn btn-sm bg-info mx-auto text-light'>  Indisponible </a>
+                                        {% else %}
+                                            <a  href= "{{ path('add_to_cart', {'id' : book.id }) }}"
+                                                class="btn btn-sm text-light px-3 py-1" style="background:#5C636A" > <i class="bi bi-bag h4"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                    </div>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+{% endblock %}
+
