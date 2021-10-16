@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{# {% if app.user.valid == 0 %}  #}
+ {# {{ render('inscription') }} #}
+{# {% else %} #}
+{% block content %}
+    <style>
+        body {
+            background-image: url("{{ asset('assets/images/village.jpg')}}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 88vh;
+        }
+
+        .container {
+            background: #FFFFFF;
+            padding: 20px;
+            margin-top: 10px;
+            
+        }
+    </style>
+    <div class='container mt-5'>
+    <h1 class="text-center">Formulaire d'inscription</h1>
+        {{ form_start(form) }}
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.firstname) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.password) }}
+                    {{ form_row(form.birthday) }}
+                </div>
+                <div class="col" id="some-custom-id">
+                    {{ form_row(form.lastname) }}
+                    {{ form_row(form.adress) }}
+                    {{ form_row(form.zipcode) }}
+                    {{ form_row(form.city) }}
+                </div>
+            </div>
+        {{ form_end(form) }}
+
+     </div>
+{# {% endif %} #}
+{% endblock %}
