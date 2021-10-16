@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page introuvable{% endblock %}
+
+
+{# {% form_theme form 'bootstrap_5_layout.html.twig' %} #}
+
+{% block content %}
+
+    <style>
+        body {
+            background-image: url("{{ asset('assets/images/village.jpg')}}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 88vh;
+        }
+
+        .container {
+            background: #FFFFFF;
+            padding: 20px;
+            margin-top: 100px;
+        
+        }
+    </style> 
+        <div class="container">
+      <h2> Page Introuvable</h2>
+      <p> Désolé, cette page ne semble pas être accessible pour le moment.  </p>
+      <a href=" {{ path('home')}}" class='btn btn-info'> Revenir à l'accueil </a>
+        </div>
+{% endblock %}
