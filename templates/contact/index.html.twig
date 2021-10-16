@@ -25,7 +25,7 @@
 
             <p>Info </p>
 
-            {% if message in app.flashes('notice') %}
+            {% for message in app.flashes('notice') %}
                 <div class="alert alert-info"> {{message}}</div>
             {% endif %}
             </div>
