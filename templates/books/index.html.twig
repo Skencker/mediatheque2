@@ -6,9 +6,9 @@
 {% endblock %}
 {% block content %}
 
-{# {% if app.user.valid == 0 %} 
+{% if app.user.valid == 0 %} 
     {{ render('connexion') }}
-{% else %} #}
+{% else %}
     <div class="container">
         <div class='row mt-5'>
             <div class="col-12 col-md-3">
@@ -56,6 +56,6 @@
         </div>
     </div>
 
-{# {% endif %} #}
+{% endif %}
 {% endblock %}
 

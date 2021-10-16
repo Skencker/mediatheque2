@@ -3,9 +3,9 @@
 {% block nav %}
 {% endblock %}
 {% block content %}
-{# {% if app.user.valid == 0 %} 
+{% if app.user.valid == 0 %} 
     {{ render('connexion') }}
-{% else %} #}
+{% else %}
 
 <div class="container">
     <h1> Mes emprunts </h1>
@@ -55,6 +55,6 @@
             </tbody>
         </table>
 </div>
-{# {% endif %} #}
+{% endif %}
 
 {% endblock %}
