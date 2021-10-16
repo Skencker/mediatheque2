@@ -4,6 +4,8 @@
 
 {% block content %}
 
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
 <style>
     body {
         background-image: url("{{ asset('assets/images/village.jpg')}}");
@@ -12,22 +14,30 @@
         background-position: center;
         height: 88vh;
     }
+      .container {
+            background: #FFFFFF;
+            padding: 20px;
+            margin-top: 50px;
+        
+        }
 </style>
-    <div class="wrapper d-flex justify-content-center align-items-center flex-column h-100">
-        <div class='text-content container-fluid m-5'>
-            <h1 class="text-light text-center"> Nous contacter</h1>
-
+    <div class="wrapper text-dark container d-flex justify-content-center align-items-center flex-column h-100">
+        <div class='text-content container-fluid m-5 d-flex flex-column '>
+            <h1 class="text-center mb-5"> Nous contacter</h1>
+<div class="row">
             <div class="col-md-8">
-                {# {{ form(form)}} #}
+                {{ form(form)}}
             </div>
             <div class="col-md-4">
-            <strong> Médiathéque Chapelle-Curreaux</strong>
+            <strong class="h3 "> Médiathéque <br> Chapelle-Curreaux</strong>
 
-            <p>Info </p>
+            <p class="mt-5">Tel : <br> 06 00 00 00 00</p>
+            <p>Adresse : <br> 10 chemin de la ville <br> 30100 CURREAUX</p>
 
-            {# {% for message in app.flashes('notice') %}
+            {% for message in app.flashes('notice') %}
                 <div class="alert alert-info"> {{message}}</div>
-            {% endif %} #}
+            {% endfor %}
+            </div>
             </div>
 
         </div>
