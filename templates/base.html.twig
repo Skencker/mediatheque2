@@ -79,13 +79,13 @@
                             href="{{ path('cart')}}"
                             ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><i class=" h4 bi bi-minecart"></i></font></font></a>
                             </li>
-                            {% if is_granted('ROLE_EMPLOYE') %}
+                            {# {% if is_granted('ROLE_EMPLOYE') %} #}
                                 <li class="nav-item">
                                     <a class="nav-link" 
-                                    {# href="{{ path('admin')}}" #}
+                                    href="{{ path('admin')}}"
                                     ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Accés Employé</font></font></a>
                                 </li>
-                            {% endif %}
+                            {# {% endif %} #}
                             {% if is_granted('ROLE_ADMIN') %}
                                 <li class="nav-item">
                                     <a class="nav-link" 
