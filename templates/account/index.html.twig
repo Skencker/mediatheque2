@@ -7,9 +7,9 @@
 
 {% block content %}
 
-{# {% if app.user.valid == 0 %} 
+{% if app.user.valid == 0 %} 
     {{ render('connexion') }}
-{% else %} #}
+{% else %}
 
 <div class="container">
     <h1>Votre compte</h1>
@@ -23,6 +23,6 @@
 
     <a class='text-info' href="{{ path('user_borrow')}}">VOIR MES EMPRUNTS</a>
 </div>
-{# {% endif %} #}
+{% endif %}
 
 {% endblock %}

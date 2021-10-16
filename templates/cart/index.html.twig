@@ -40,11 +40,11 @@
         <div class= "text-end">
             <p> Nombre de livre : {{ cart|length }} </p> 
             <a 
-            href="{{ path('borrow') }}"
-             class="btn btn-success btn-block"> Valider mon emprunt </a>
-            <a 
             href="{{ path('remove_my_cart') }}"
              class="btn btn-danger btn-block"> Vider le panier </a>
+            <a 
+            href="{{ path('borrow') }}"
+             class="btn btn-success btn-block"> Valider mon emprunt </a>
 
         </div>
         {# </div> #}
