@@ -23,7 +23,7 @@ class UserBorrowController extends AbstractController
     {
         $borrow = $this->entityManager->getRepository((Borrows::class))->findSucessBorrow($this->getUser());
         return $this->render('account/borrow.html.twig', [
-            'borrow' => $borrow
+            'borrows' => $borrow
         ]);
     }
 }
