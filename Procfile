@@ -1,2 +1,2 @@
 <?php
-'web: heroku-php-apache2 public/' > Procfile
+web: heroku-php-apache2 public/
