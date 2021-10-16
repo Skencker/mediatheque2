@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue{% endblock %}
+{% block nav %}
+{% endblock %}
+{% block content %}
+{% if app.user.valid == 0 %} 
+    {{ render('connexion') }}
+{% else %}
+
+<div class="container mt-5">
+<a href="{{ path('books') }}" class="btn btn-success btn-block"> Revenir au catalogue </a>
+<div class="row mt-5">
+
+    <div class='col-6'>
+        <img src="/uploads/images/{{book.image}}" alt="{{ book.name }}" class="img-fluid text-center">
+    </div>
+    <div class='col-6'>
+        <div class="card bg-secondary text-dark" style="width: 35rem;">
+              <div class="card-body">
+                <h5 class="card-title"> {{book.name}}</h5>
+                <p class="card-text"> {{book.description}}</p>
+                    {% if book.status == 1 %} 
+                        <a class = 'btn btn bg-info mx-auto text-light'>  Indispo </a>
+                    {% else %}
+                        <a
+                        href= "{{ path('add_to_cart', {'id' : book.id }) }}" 
+                        class="btn btn-info"> Ajouter au panier</a>
+                    {% endif %}
+              </div>
+        </div>
+    </div>
+</div>
+
+
+    
+
+</div>
+{% endif %}
+{% endblock %}
