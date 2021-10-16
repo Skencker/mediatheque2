@@ -45,11 +45,11 @@
                   <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                
                   </font></font></th>
-                  {# <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDetails|length}}</font></font></td> #}
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDetails|length}}</font></font></td>
                   <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                    {# {% for detail in borrow.borrowDetails %}
+                    {% for detail in borrow.borrowDetails %}
                        <p>{{ detail }}</p>
-                    {% endfor %} #}
+                    {% endfor %}
                   </font></font></td>
 
                 </tr>

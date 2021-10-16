@@ -33,6 +33,12 @@ class BorrowDetails
      */
     private $quantity;
 
+    
+    public function __toString() 
+    {
+        return $this->getBook();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
