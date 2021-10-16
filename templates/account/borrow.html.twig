@@ -22,8 +22,12 @@
               </tr>
             </thead>
             <tbody>
-              {# {% for borrow in borrow %}
-                <tr class="table-active">
+
+               {% for borrow in borrow %}
+            <pre>
+              {{ dump(borrow) }}
+            </pre>
+              {#  <tr class="table-active">
                   <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                          {% if borrow.status == 1 %}
                             <p>En cours</p>
@@ -50,8 +54,8 @@
                     {% endfor %}
                   </font></font></td>
 
-                </tr>
-              {% endfor %} #}
+                </tr> #}
+              {% endfor %}
             </tbody>
         </table>
 </div>
