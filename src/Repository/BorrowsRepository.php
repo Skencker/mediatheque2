@@ -7,10 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Borrows|null find($id, $lockMode = null, $lockVersion = null)
- * @method Borrows|null findOneBy(array $criteria, array $orderBy = null)
- * @method Borrows[]    findAll()
- * @method Borrows[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Borrow|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Borrow|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Borrow[]    findAll()
+ * @method Borrow[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class BorrowsRepository extends ServiceEntityRepository
 {
@@ -18,9 +18,19 @@ class BorrowsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Borrows::class);
     }
+    //permet d'afficher les commandes dans l'espace utilisateur
+    public function findSucessBorrow($user)
+    {
+        return $this->createQueryBuilder('b')
+                    ->orderBy('b.id', 'DESC' )
+                    ->andWhere('b.user = :user')
+                    ->setParameter('user', $user)
+                    ->getQuery()
+                    ->getResult();
+    }
 
     // /**
-    //  * @return Borrows[] Returns an array of Borrows objects
+    //  * @return Borrow[] Returns an array of Borrow objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +47,7 @@ class BorrowsRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Borrows
+    public function findOneBySomeField($value): ?Borrow
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.exampleField = :val')

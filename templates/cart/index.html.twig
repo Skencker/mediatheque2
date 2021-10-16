@@ -4,9 +4,9 @@
 {% block nav %}
 {% endblock %}
 {% block content %}
-{% if app.user.valid == 0 %} 
+{# {% if app.user.valid == 0 %} 
     {{ render('connexion') }}
-{% else %}
+{% else %} #}
 
 <div class="container">
     <h1>Mon panier </h1>
@@ -52,5 +52,5 @@
     {% else %}
         <p>Votre panier est vide</p>
     {% endif %}
-    {% endif %}
+    {# {% endif %} #}
 {% endblock %}

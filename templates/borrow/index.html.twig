@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Emprunt{% endblock %}
+
+{% block nav %}
+{% endblock %}
+{% block content %}
+{% if app.user.valid == 0 %} 
+    {{ render('connexion') }}
+{% else %}
+
+    <div class="container">
+        <h1> Votre emprunt </h1>
+        <h2> Récap de mon emprunt </h2>
+            {% for book in cart %}
+                <div class="col-2">
+                    <img src="/uploads/images/{{book.book.image}}" alt="{{ book.book.name }}" class="img-fluid h-25" >
+                    x {{ book.quantity }}
+                 </div>
+                <div class="col-2">
+                     <p> {{ book.book.name }}</p>
+                 </div>
+            
+            {% endfor %}
+       {{form(form, {action:path('borrow_recap')})}}
+    </div>
+    {% endif %}
+{% endblock %}
