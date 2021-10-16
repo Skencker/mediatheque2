@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Books;
+use App\Classe\Search;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +18,34 @@ class BooksRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Books::class);
+    }
+
+    public function findWithSearch (Search $search) {
+        $query = $this
+            ->createQueryBuilder('b')
+            ->select('b','g', 'c')
+            ->join('b.genre', 'g' )
+            ->join('b.category', 'c');
+
+        if (!empty($search->genres)) {
+            $query = $query
+            ->andWhere('g.id IN (:genres)')
+            ->setParameter('genres', $search->genres);
+        }
+
+        if (!empty($search->categories)) {
+            $query = $query
+            ->andWhere('c.id IN (:categories)')
+            ->setParameter('categories', $search->categories);
+        }
+
+        if (!empty($search->string)) {
+            $query = $query
+                ->andWhere('b.name LIKE :string')
+                ->setParameter('string', "%{$search->string}%"); // recherche partielle   
+        }
+
+        return $query->getQuery()->getResult();
     }
 
     // /**
