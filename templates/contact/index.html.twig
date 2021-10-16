@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ACCUEIL{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        background-image: url("{{ asset('assets/images/village.jpg')}}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 88vh;
+    }
+</style>
+    <div class="wrapper d-flex justify-content-center align-items-center flex-column h-100">
+        <div class='text-content container-fluid m-5'>
+            <h1 class="text-light text-center"> Nous contacter</h1>
+
+            <div class="col-md-8">
+                {{ form(form)}}
+            </div>
+            <div class="col-md-4">
+            <strong> Médiathéque Chapelle-Curreaux</strong>
+
+            <p>Info </p>
+
+            {% if message in app.flashes('notice') %}
+                <div class="alert alert-info"> {{message}}</div>
+            {% endif %}
+            </div>
+
+        </div>
+{% endblock %}
