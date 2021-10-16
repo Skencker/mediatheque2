@@ -70,7 +70,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="boolean")
      */
-    private $valid;
+    private $valid = 0;
 
     /**
      * @ORM\OneToMany(targetEntity=Borrows::class, mappedBy="user")
@@ -107,6 +107,11 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
+    }
+
+    public function getFullName(): ?string
+    {
+        return $this->getFirstname().' '.$this->getLastname();
     }
 
     /**
