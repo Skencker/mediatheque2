@@ -24,7 +24,7 @@ class BorrowController extends AbstractController
     }
 
     #[Route('/emprunt', name: 'borrow')]
-    public function index(Cart $cart, Request $request): Response
+    public function index(Cart $cart): Response
     {
         $date = new DateTime();
         $form = $this->createForm(BorrowType::class, null, [

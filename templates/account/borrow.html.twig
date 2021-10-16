@@ -3,9 +3,9 @@
 {% block nav %}
 {% endblock %}
 {% block content %}
-{% if app.user.valid == 0 %} 
+{# {% if app.user.valid == 0 %} 
     {{ render('connexion') }}
-{% else %}
+{% else %} #}
 
 <div class="container">
     <h1> Mes emprunts </h1>
@@ -22,7 +22,7 @@
               </tr>
             </thead>
             <tbody>
-              {% for borrow in borrow %}
+              {# {% for borrow in borrow %}
                 <tr class="table-active">
                   <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                          {% if borrow.status == 1 %}
@@ -30,7 +30,7 @@
                         {% else %}
                             <p>Rendu</p>    
                         {% endif %}
-                  </font></font></th>
+                  </font></font></th> #}
                   {# <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                         {% if "now"|date('d-m-Y') > borrow.borrowDate|date('d-m-Y')  %}
                             <p>En cours</p>
@@ -38,7 +38,7 @@
                             <p>en retard</p>    
                         {% endif %}
                   </font></font></th> #}
-                  <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.createat | date('d/m/y')}}</font></font></th>
+                  {# <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.createat | date('d/m/y')}}</font></font></th>
                   <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDate | date('d/m/y')}} </font></font></th>
                   <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                
@@ -51,10 +51,10 @@
                   </font></font></td>
 
                 </tr>
-              {% endfor %}
+              {% endfor %} #}
             </tbody>
         </table>
 </div>
-{% endif %}
+{# {% endif %} #}
 
 {% endblock %}
