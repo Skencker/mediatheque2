@@ -32,7 +32,14 @@ class Categories
     public function __construct()
     {
         $this->books = new ArrayCollection();
+        $this->book = new ArrayCollection();
     }
+    
+    public function __toString() 
+    {
+        return $this->getName();
+    }
+
 
     public function getId(): ?int
     {
