@@ -24,7 +24,7 @@
             <tbody>
 
                {% for borrow in borrows %}
-              {<tr class="table-active">
+              <tr class="table-active">
                   <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                             <p>En cours</p>
                          {# {% if borrow.status == 1 %}
@@ -32,7 +32,7 @@
                         {% else %}
                             <p>Rendu</p>    
                         {% endif %} #}
-                  </font></font></th> #}
+                  </font></font></th>
                   {# <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                         {% if "now"|date('d-m-Y') > borrow.borrowDate|date('d-m-Y')  %}
                             <p>En cours</p>
@@ -42,9 +42,6 @@
                   </font></font></th> #}
                   <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.createat | date('d/m/y')}}</font></font></th>
                   <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDate | date('d/m/y')}} </font></font></th>
-                  <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-               
-                  </font></font></th>
                   <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDetails|length}}</font></font></td>
                   <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                     {% for detail in borrow.borrowDetails %}
