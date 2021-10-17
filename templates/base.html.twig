@@ -98,6 +98,7 @@
             </nav>
         </div>
         {% endif %}
+    
  {% block content %}    {% endblock %}
 
           <footer class="fixed-bottom text-center pt-3">
@@ -113,8 +114,7 @@
         let body = document.querySelector('body');
         let darkmode = localStorage.getItem('darkmode')
         let navbar = document.querySelector('nav')
-        let table = document.querySelector('table')
-        let tr = document.querySelectorAll('tr')
+        let table = document.querySelectorAll('table')
         let card = document.querySelectorAll('#card')
 
 
@@ -123,12 +123,12 @@
                 body.classList.add('dark')
                 navbar.classList.add('navbar-dark')
                 navbar.classList.add('bg-dark')
-                for (let i = 0; i < tr.length; i ++) {
-                        tr[i].classList.add('text-light')
-                }
                 for (let i = 0; i < card.length; i ++) {
                         card[i].classList.add('bg-dark')
                         card[i].classList.add('text-light')
+                }
+                for (let i = 0; i < table.length; i ++) {
+                        table[i].classList.add('table-dark')
                 }
                 localStorage.setItem('darkmode','enabled')
         }
@@ -136,12 +136,12 @@
                 body.classList.remove('dark')
                 navbar.classList.remove('bg-dark')
                 navbar.classList.remove('navbar-dark')
-                for (let i = 0; i < tr.length; i ++) {
-                        tr[i].classList.remove('text-light')
-                }
                 for (let i = 0; i < card.length; i ++) {
                         card[i].classList.remove('bg-dark')
                         card[i].classList.remove('text-light')
+                }
+                for (let i = 0; i < table.length; i ++) {
+                        table[i].classList.remove('table-dark')
                 }
                 localStorage.setItem('darkmode', null)
         }
