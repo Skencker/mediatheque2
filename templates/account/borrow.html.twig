@@ -9,6 +9,16 @@
 
 <div class="container">
     <h1> Mes emprunts </h1>
+           {% for borrow in borrows %}
+                 {% if borrow.createat|date('d/m/y')  < "now"|date('d-m-Y') %}
+                    {% for message in app.flashes('retard') %}
+                        <div class="alert alert-danger text-light"> 
+                        <p>Emprunt du  {{borrow.createat | date('d/m/y')}}</p>
+                        {{message}}
+                        </div>
+                    {% endfor %}
+                 {% endif %}
+            {% endfor %}
        <table class="table table-hover table-striped">
             <thead>
               <tr>
@@ -24,32 +34,19 @@
             <tbody>
 
                {% for borrow in borrows %}
-              <tr class="table-active">
-                  <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                            <p>En cours</p>
-                         {# {% if borrow.status == 1 %}
-                            <p>En cours</p>
-                        {% else %}
-                            <p>Rendu</p>    
-                        {% endif %} #}
-                  </font></font></th>
-                  {# <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                        {% if "now"|date('d-m-Y') > borrow.borrowDate|date('d-m-Y')  %}
-                            <p>En cours</p>
-                        {% else %}
-                            <p>en retard</p>    
-                        {% endif %}
-                  </font></font></th> #}
-                  <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.createat | date('d/m/y')}}</font></font></th>
-                  <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDate | date('d/m/y')}} </font></font></th>
-                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDetails|length}}</font></font></td>
-                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                    {% for detail in borrow.borrowDetails %}
-                       <p>{{ detail }}</p>
-                    {% endfor %}
-                  </font></font></td>
+                  <tr class="table-active">
+                      <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En cours</font></font></th>
+                      <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.createat | date('d/m/y')}}</font></font></th>
+                      <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDate|date('d/m/y')}} 
+                      </font></font></th>
+                      <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDetails|length}}</font></font></td>
+                      <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                        {% for detail in borrow.borrowDetails %}
+                          <p>{{ detail }}</p>
+                        {% endfor %}
+                      </font></font></td>
 
-                </tr>
+                    </tr>
               {% endfor %}
             </tbody>
         </table>
