@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Validator\Constraints\Length;
 
 class CartController extends AbstractController
 {
@@ -16,6 +17,12 @@ class CartController extends AbstractController
     
     public function index(Cart $cart): Response
     {
+        // dd(count($cart->getFull()));
+        if (($cart->getFull()) > 5) 
+        {
+            $this->addFlash('cartfull', 'Vous avez atteints le nombre de livre maximun à emptrunter (5).');
+
+        }
         return $this->render('cart/index.html.twig', [
             'cart' => $cart->getFull()
         ]);
@@ -27,6 +34,7 @@ class CartController extends AbstractController
     public function add(Cart $cart, $id): Response
     {
         $cart->add($id);
+        
 
         return $this->redirectToRoute('cart');
     }

@@ -29,7 +29,6 @@ class UserBorrowController extends AbstractController
             if($borrowDate->getBorrowDate() < $dateTime ) {
                 $this->addFlash('retard', 'Merci de bien vouloir retourner votre livre dans les plus brefs détails');
             }
-            // dd($dateTime);
         }
         return $this->render('account/borrow.html.twig', [
             'borrows' => $borrow

@@ -1,56 +1,63 @@
 {% extends 'base.html.twig' %}
+
 {% block title %}Mes emprunts{% endblock %}
+
 {% block nav %}
 {% endblock %}
-{% block content %}
-{% if app.user.valid == 0 %} 
-    {{ render('connexion') }}
-{% else %}
 
-<div class="container">
-    <h1> Mes emprunts </h1>
-           {% for borrow in borrows %}
-                 {% if borrow.createat|date('d/m/y')  < "now"|date('d-m-Y') %}
+{% block content %}
+    {% if app.user.valid == 0 %} 
+        {{ render('connexion') }}
+    {% else %}
+        <div class="container">
+            <h1> Mes emprunts </h1>
+            {% for borrow in borrows %}
+                  {% if borrow.createat|date('d/m/y')  < "now"|date('d-m-Y') %}
                     {% for message in app.flashes('retard') %}
                         <div class="alert alert-danger text-light"> 
                         <p>Emprunt du  {{borrow.createat | date('d/m/y')}}</p>
                         {{message}}
                         </div>
                     {% endfor %}
-                 {% endif %}
+                  {% endif %}
             {% endfor %}
-       <table class="table table-hover table-striped">
-            <thead>
-              <tr>
-                <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Etat</font></font></th>
-                {# <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retard</font></font></th> #}
-                <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Date d'emprunt</font></font></th>
-                <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Date de retour</font></font></th>
-                {# <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retour</font></font></th> #}
-                <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quantité de livre</font></font></th>
-                <th scope="col" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Livre</font></font></th>
-              </tr>
-            </thead>
-            <tbody>
-
-               {% for borrow in borrows %}
-                  <tr class="table-active">
-                      <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En cours</font></font></th>
-                      <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.createat | date('d/m/y')}}</font></font></th>
-                      <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDate|date('d/m/y')}} 
-                      </font></font></th>
-                      <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDetails|length}}</font></font></td>
-                      <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                        {% for detail in borrow.borrowDetails %}
-                          <p>{{ detail }}</p>
-                        {% endfor %}
-                      </font></font></td>
-
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                      <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Etat</font></font></th>
+                      {# <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retard</font></font></th> #}
+                      <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Date d'emprunt</font></font></th>
+                      <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Date de retour</font></font></th>
+                      {# <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retour</font></font></th> #}
+                      <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quantité de livre</font></font></th>
+                      <th scope="col" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Livre</font></font></th>
                     </tr>
-              {% endfor %}
-            </tbody>
-        </table>
-</div>
-{% endif %}
+                </thead>
+                <tbody>
+                  {% for borrow in borrows %}
+                      <tr class="table-active">
+                          <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                              {% if borrow.status == 1 %}
+                                  <p> En cours </p>
+                              {% else %}                            
+                                  <p> Terminer </p>
+                              {% endif %}                            
+                          </font></font></th>
+                          <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.createat | date('d/m/y')}}</font></font></th>
+                          <th scope="row"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDate|date('d/m/y')}} 
+                          </font></font></th>
+                          <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{borrow.borrowDetails|length}}</font></font></td>
+                          <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                            {% for detail in borrow.borrowDetails %}
+                              <p>{{ detail }}</p>
+                            {% endfor %}
+                          </font></font></td>
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
 
 {% endblock %}
