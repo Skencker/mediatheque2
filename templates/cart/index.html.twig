@@ -14,11 +14,13 @@
 <a href="{{ path('books') }}" class="btn mb-3"k> Revenir au catalogue </a>
 
     {% if cart|length > 0 %}
-         {% for message in app.flashes('cartfull') %}
-                <div class="alert alert-danger text-light"> 
-                                  {{message}}
-                </div>
-            {% endfor %}
+        {% if cart|length == 5 %}
+            {% for message in app.flashes('cartfull') %}
+                    <div class="alert alert-danger text-light"> 
+                                      {{message}}
+                    </div>
+              {% endfor %}
+        {% endif %}
         <table class="table table-hover table-striped ">
             <thead>
               <tr>
