@@ -17,7 +17,10 @@ class CartController extends AbstractController
     
     public function index(Cart $cart): Response
     {
-        $this->addFlash('cartfull', 'Vous avez atteints le nombre de livre maximun à emptrunter (5).');
+        if (count($cart->get()) == 5) {
+
+            $this->addFlash('cartfull', 'Vous avez atteints le nombre de livre maximun à emptrunter (5).');
+        }
         
         return $this->render('cart/index.html.twig', [
             'cart' => $cart->getFull()

@@ -23,14 +23,14 @@ class UsersCrudController extends AbstractCrudController
     {
         return [
             BooleanField::new('valid','Valide'),
-            IdField::new('id'),
-            TextField::new('firstname','Prénom'),
-            TextField::new('lastname','Nom'),
-            TextField::new('adress','Adresse'),
-            IntegerField::new('zipcode','Code postal'),
-            TextField::new('city','Ville'),
-            EmailField::new('email', 'Email'),
-            DateField::new('birthday','Date anniversaire')
+            IdField::new('id')->hideOnForm(),
+            TextField::new('firstname','Prénom')->setColumns('col-sm-12 col-lg-7 col-xxl-6'),
+            TextField::new('lastname','Nom')->setColumns('col-sm-12 col-lg-7 col-xxl-6'),
+            TextField::new('adress','Adresse')->setColumns('col-sm-12 col-lg-7 col-xxl-6'),
+            IntegerField::new('zipcode','Code postal')->setColumns('col-sm-12 col-lg-7 col-xxl-6'),
+            TextField::new('city','Ville')->setColumns('col-sm-12 col-lg-7 col-xxl-6'),
+            EmailField::new('email', 'Email')->setColumns('col-sm-12 col-lg-7 col-xxl-6'),
+            DateField::new('birthday','Date anniversaire')->setColumns('col-sm-12 col-lg-7 col-xxl-6')
         ];
     }
     
