@@ -15,7 +15,7 @@ class BorrowType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider mon emprunt',
                 'attr' => [
-                    'class' => 'btn btn-success justify-self-center '
+                    'class' => 'btn text-light bg-success justify-self-center '
                 ]
             ])
         ;

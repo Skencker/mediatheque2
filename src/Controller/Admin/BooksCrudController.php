@@ -23,7 +23,7 @@ class BooksCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            BooleanField::new('status','Disponibilité'),
+            BooleanField::new('status','Disponible / indispo'),
             TextField::new('name','Nom'),
             SlugField::new('slug')->setTargetFieldName('name'),
             TextField::new('author', 'Auteur'),

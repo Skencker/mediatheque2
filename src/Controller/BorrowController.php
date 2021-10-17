@@ -30,7 +30,6 @@ class BorrowController extends AbstractController
         $form = $this->createForm(BorrowType::class, null, [
             'user' => $this->getUser()
         ]);
-
         return $this->render('borrow/index.html.twig', [
             'form' => $form->createView(),
             'cart' => $cart->getFull(),
@@ -49,10 +48,8 @@ class BorrowController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            
             $date = new DateTime();
-            // $dateReturn = date('12-10-2021', '+20days');
-            // dd($dateReturn);
             //enregister l'emprunt
             $dateBorrow = clone $date;
             $borrow = new Borrows();
@@ -62,7 +59,8 @@ class BorrowController extends AbstractController
             $borrow->setUser($this->getUser());
             $borrow->setCreateAt($date);
             $borrow->setStatus(1);
-
+            
+            
             $this->entityManager->persist($borrow);
             
             //enregitrer les detail de l'emprunt
@@ -73,15 +71,26 @@ class BorrowController extends AbstractController
                 //le livre n'est plaus dispo
                 $borrowDetails ->getBook($book['book']->setStatus(1));
                 $borrowDetails ->setQuantity($book['quantity']);
+                
+                
                 $this->entityManager->persist($borrowDetails);
             }
+
+                $this->entityManager->flush();
             
-            $this->entityManager->flush();
+            // if ( $borrow->setStatus(1)) {
+            //     $borrowDetails ->getBook($book['book']->setStatus(0));
+                // $this->entityManager->persist($borrow);
+                // $this->entityManager->persist($borrowDetails);
+ 
+            // }
+            
+           
         }
-            $cart->remove();
-            return $this->render('borrow/add.html.twig', [
-                // 'form' => $form->createView(),
-                'cart' => $cart->getFull()
+        $cart->remove();
+        return $this->render('borrow/add.html.twig', [
+            // 'form' => $form->createView(),
+            'cart' => $cart->getFull()
             ]);
 
       
