@@ -2,9 +2,9 @@
 
 {% block title %}Emprunt{% endblock %}
 
+{% block content %}
 {% block nav %}
 {% endblock %}
-{% block content %}
 {% if app.user.valid == 0 %} 
     {{ render('connexion') }}
 {% else %}
