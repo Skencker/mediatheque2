@@ -48,8 +48,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Genre de livre', 'fas fa-list-alt', Genres::class);
         yield MenuItem::linkToCrud('Catégorie de livre', 'far fa-list-alt', Categories::class);
         yield MenuItem::linkToCrud('Livres', 'fas fa-book', Books::class);
-        // yield MenuItem::linkToCrud('Emprunts', 'fas fa-caret-right', Borrows::class);
-        yield MenuItem::linkToCrud('Emprunt', 'fas fa-caret-right', BorrowDetails::class);
+        yield MenuItem::linkToCrud('Emprunts', 'fas fa-caret-right', Borrows::class);
+        yield MenuItem::linkToCrud('Emprunt-Uilisateur', 'fas fa-caret-right', BorrowDetails::class);
         yield MenuItem::linkToLogout('Deconnexion', 'fas fa-sign-out-alt', 'app_logout');
     }
 }

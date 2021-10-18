@@ -36,7 +36,7 @@ class BooksCrudController extends AbstractCrudController
             DateField::new('datePub', 'Date de publication')->setColumns('col-sm-12 col-lg-7 col-xxl-6'),
             AssociationField::new('category','Catégorie')->setColumns('col-sm-12 col-lg-7 col-xxl-6'),
             AssociationField::new('genre','Genre')->setColumns('col-sm-12 col-lg-7 col-xxl-6'),
-            TextareaField::new('description','Déscription')->setColumns('col-sm-12 col-lg-7 col-xxl-6'),
+            TextareaField::new('description','Description')->setColumns('col-sm-12 col-lg-7 col-xxl-6'),
             ImageField::new('image')
                 ->setUploadDir('public/uploads/images')
                 ->setBasePath('uploads/images')
