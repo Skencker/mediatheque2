@@ -18,7 +18,7 @@ class BorrowDetailsCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('borrow','Emprunt'),
+            AssociationField::new('borrow','Emprunteur'),
             TextField::new('book', 'Livres')
         ];
     }

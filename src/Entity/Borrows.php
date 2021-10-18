@@ -50,6 +50,11 @@ class Borrows
         $this->borrowDetails = new ArrayCollection();
     }
 
+    public function __toString() 
+    {
+        return $this->getUser()->getFullName();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

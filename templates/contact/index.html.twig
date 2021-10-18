@@ -2,26 +2,16 @@
 
 {% block title %}ACCUEIL{% endblock %}
 
-{% block content %}
 
+{% block nav %}
+{% endblock %}
+{% block content %}
+{% if app.user.valid == 0 %} 
+    {{ render('connexion') }}
+{% else %}
 {% form_theme form 'bootstrap_5_layout.html.twig' %}
 
-<style>
-    body {
-        background-image: url("{{ asset('assets/images/village.jpg')}}");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        height: 88vh;
-    }
-      .container {
-            background: #FFFFFF;
-            padding: 20px;
-            margin-top: 50px;
-        
-        }
-</style>
-    <div class="wrapper text-dark container d-flex justify-content-center align-items-center flex-column h-100">
+<div class="wrapper text-dark container d-flex justify-content-center align-items-center flex-column h-100">
         <div class='text-content container-fluid m-5 d-flex flex-column '>
             <h1 class="text-center mb-5"> Nous contacter</h1>
 <div class="row">
@@ -43,4 +33,5 @@
             </div>
 
         </div>
+{% endif %}
 {% endblock %}
