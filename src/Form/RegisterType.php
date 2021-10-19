@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Length;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 class RegisterType extends AbstractType
 {
@@ -45,7 +45,10 @@ class RegisterType extends AbstractType
     ])
     ->add('password', RepeatedType::class, [
         'type' => PasswordType::class,
-        'constraints' => new Length(20,6),
+        'constraints' => [
+            new Assert\Regex(['pattern' => '/#/']),
+            new Assert\Length(['min' => 6]),
+        ],
         'invalid_message' => 'Le mot de passe et la confirmation doivent être identique.',
         'label' => 'Votre mot de passe',
         'required' => true,

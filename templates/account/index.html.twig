@@ -13,7 +13,7 @@
 
 <div class="container">
     <h1>Votre compte</h1>
-    Bienvenue {{app.user.lastname}}  {{app.user.firstname}} dans votre compte
+    Bienvenue {{app.user.lastname | escape}}  {{app.user.firstname | escape}} dans votre compte
 <hr>
     <h2> Mes coordonées </h2>
     <p> Adresse : {{app.user.adress}}</p>
