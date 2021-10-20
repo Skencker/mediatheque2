@@ -46,7 +46,7 @@ class RegisterType extends AbstractType
     ->add('password', RepeatedType::class, [
         'type' => PasswordType::class,
         'constraints' => [
-            new Assert\Regex(array('pattern' => '/#/', 'message' => 'Votre mot de passe doit contenir le caractère spécial #.' ),
+            new Assert\Regex(array('pattern' => '/#/', 'message' => 'Votre mot de passe doit contenir un #')),
             new Assert\Length(['min' => 6]),
         ],
         'invalid_message' => 'Le mot de passe et la confirmation doivent être identique.',
