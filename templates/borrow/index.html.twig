@@ -2,32 +2,31 @@
 
 {% block title %}Emprunt{% endblock %}
 
-{% block content %}
 {% block nav %}
 {% endblock %}
-{% if app.user.valid == 0 %} 
-    {{ render('connexion') }}
-{% else %}
 
-    <div class="container text-center mt-5">
-        <h2> Récap de mon emprunt </h2>
-        <div class='row'>
-            {% for book in cart %}
-                <div class="col-2">
-            <div style=" height: 30vh; width: 100wh; ">
-                    <img src="/uploads/images/{{book.book.image}}" alt="{{ book.book.name }}" class="img-fluid " >
-                    x {{ book.quantity }}
-                </div>
-                </div>
-                <div class="col-2">
-                    <p> {{ book.book.name }}</p>
-                </div>
-            
-            {% endfor %}
+{% block content %}
+    {% if app.user.valid == 0 %} 
+        {{ render('connexion') }}
+    {% else %}
+        <div class="container text-center mt-5">
+            <h2> Récap de mon emprunt </h2>
+            <div class='row'>
+                {% for book in cart %}
+                    <div class="col-2">
+                        <div style=" height: 30vh; width: 100wh; ">
+                            <img src="/uploads/images/{{book.book.image}}" alt="{{ book.book.name }}" class="img-fluid " >
+                        x {{ book.quantity }}
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <p> {{ book.book.name }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class='row d-flex justify-self-center '>
+                {{form(form, {action:path('borrow_recap')})}}
+            </div>
         </div>
-        <div class='row d-flex justify-self-center '>
-            {{form(form, {action:path('borrow_recap')})}}
-        </div>
-    </div>
     {% endif %}
 {% endblock %}

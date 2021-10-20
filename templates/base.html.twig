@@ -46,7 +46,6 @@
     </head>
     <body>
         {% if block('nav') is defined %}
-        {# <div class='container-nav'> #}
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
@@ -93,30 +92,24 @@
                                     ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Accés Admin</font></font></a>
                                 </li>
                             {% endif %}
-                    
                         </ul>
                     </div>
                 </div>
                 <div class="form-check form-switch dark-theme">
                     <input class="form-check-input" type="checkbox" id="toogle" name="theme" />
-                    <label class="form-check-label " for="flexSwitchCheckDefault">Dark Mode</label
-                    >
+                    <label class="form-check-label " for="flexSwitchCheckDefault">Dark Mode</label>
                 </div>
             </nav>
-        {# </div> #}
         {% endif %}
-    
- {% block content %}    {% endblock %}
+        {% block content %} {% endblock %}
 
-          <footer class="fixed-bottom text-center pt-3">
+        <footer class="fixed-bottom text-center pt-3">
             Copyright 2021 Médiathéque Chapelle-Curreaux
         </footer>
     </body>
               <!--Bootstrap-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script 
-    {# src="{{ asset('assets/js/app.js')}}" #}
-    >
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script >
         let input = document.querySelector('input[name="theme"]');
         let body = document.querySelector('body');
         let darkmode = localStorage.getItem('darkmode')
@@ -124,18 +117,16 @@
         let table = document.querySelectorAll('table')
         let card = document.querySelectorAll('#card')
 
-
-
         const enableDarkmode = () => {
                 body.classList.add('dark')
                 navbar.classList.add('navbar-dark')
                 navbar.classList.add('bg-dark')
                 for (let i = 0; i < card.length; i ++) {
-                        card[i].classList.add('bg-dark')
-                        card[i].classList.add('text-light')
+                    card[i].classList.add('bg-dark')
+                    card[i].classList.add('text-light')
                 }
                 for (let i = 0; i < table.length; i ++) {
-                        table[i].classList.add('table-dark')
+                    table[i].classList.add('table-dark')
                 }
                 localStorage.setItem('darkmode','enabled')
         }
@@ -144,11 +135,11 @@
                 navbar.classList.remove('bg-dark')
                 navbar.classList.remove('navbar-dark')
                 for (let i = 0; i < card.length; i ++) {
-                        card[i].classList.remove('bg-dark')
-                        card[i].classList.remove('text-light')
+                    card[i].classList.remove('bg-dark')
+                    card[i].classList.remove('text-light')
                 }
                 for (let i = 0; i < table.length; i ++) {
-                        table[i].classList.remove('table-dark')
+                    table[i].classList.remove('table-dark')
                 }
                 localStorage.setItem('darkmode', null)
         }
@@ -158,16 +149,14 @@
         }
 
         input.addEventListener('click', () => {
-                darkmode = localStorage.getItem('darkmode')
-                if (darkmode !== 'enabled') {
-                        console.log('activé')
-                        enableDarkmode();
-                } else {
-                        disableDarkmode();
-                        console.log('desactivé')
-                }
+            darkmode = localStorage.getItem('darkmode')
+            if (darkmode !== 'enabled') {
+                console.log('activé')
+                enableDarkmode();
+            } else {
+                disableDarkmode();
+                console.log('desactivé')
+            }
         })
-
-
     </script>
 </html>

@@ -6,24 +6,19 @@
 {% endblock %}
 
 {% block content %}
-
-{% if app.user.valid == 0 %} 
-    {{ render('connexion') }}
-{% else %}
-
-<div class="container">
-    <h1>Votre compte</h1>
-    Bienvenue {{app.user.lastname | escape}}  {{app.user.firstname | escape}} dans votre compte
-<hr>
-    <h2> Mes coordonées </h2>
-    <p> Adresse : {{app.user.adress}}</p>
-    <p> Code Postal : {{app.user.zipcode}}</p>
-    <p> Ville : {{app.user.city}}</p>
-    <p> Email : {{app.user.email}}</p>
-
-
-    <a class='text-info' href="{{ path('user_borrow')}}">VOIR MES EMPRUNTS</a>
-</div>
-{% endif %}
-
+    {% if app.user.valid == 0 %} 
+        {{ render('connexion') }}
+    {% else %}
+        <div class="container">
+            <h1>Votre compte</h1>
+            Bienvenue {{app.user.lastname | escape}}  {{app.user.firstname | escape}} dans votre compte
+            <hr>
+            <h2> Mes coordonées </h2>
+            <p> Adresse : {{app.user.adress}}</p>
+            <p> Code Postal : {{app.user.zipcode}}</p>
+            <p> Ville : {{app.user.city}}</p>
+            <p> Email : {{app.user.email}}</p>
+            <a class='text-info' href="{{ path('user_borrow')}}">VOIR MES EMPRUNTS</a>
+        </div>
+    {% endif %}
 {% endblock %}

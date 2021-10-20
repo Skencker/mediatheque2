@@ -1,37 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ACCUEIL{% endblock %}
-
+{% block title %}Contact{% endblock %}
 
 {% block nav %}
 {% endblock %}
 {% block content %}
-{% if app.user.valid == 0 %} 
-    {{ render('connexion') }}
-{% else %}
-{% form_theme form 'bootstrap_5_layout.html.twig' %}
 
-<div class="wrapper text-dark container d-flex justify-content-center align-items-center flex-column h-100">
-        <div class='text-content container-fluid m-5 d-flex flex-column '>
-            <h1 class="text-center mb-5"> Nous contacter</h1>
-<div class="row">
-            <div class="col-md-8">
-                {{ form(form)}}
+    {% if app.user.valid == 0 %} 
+        {{ render('connexion') }}
+    {% else %}
+        {% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+        <div class="wrapper text-dark container d-flex justify-content-center align-items-center flex-column h-100">
+            <div class='text-content container-fluid m-5 d-flex flex-column '>
+                <h1 class="text-center mb-5"> Nous contacter</h1>
+                    <div class="row">
+                        <div class="col-md-8">
+                            {{ form(form)}}
+                        </div>
+                        <div class="col-md-4">
+                            <strong class="h3 "> Médiathéque <br> Chapelle-Curreaux</strong>
+
+                            <p class="mt-5">Tel : <br> 06 00 00 00 00</p>
+                            <p>Adresse : <br> 10 chemin de la ville <br> 30100 CURREAUX</p>
+
+                            <a href="{{ path('books') }}" class="btn btn-success mb-5"> Revenir au catalogue </a>
+
+                            {% for message in app.flashes('notice') %}
+                                <div class="alert alert-info"> {{message}}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-            <strong class="h3 "> Médiathéque <br> Chapelle-Curreaux</strong>
-
-            <p class="mt-5">Tel : <br> 06 00 00 00 00</p>
-            <p>Adresse : <br> 10 chemin de la ville <br> 30100 CURREAUX</p>
-
-            <a href="{{ path('books') }}" class="btn btn-success mb-5"> Revenir au catalogue </a>
-
-            {% for message in app.flashes('notice') %}
-                <div class="alert alert-info"> {{message}}</div>
-            {% endfor %}
-            </div>
-            </div>
-
-        </div>
-{% endif %}
+    {% endif %}
 {% endblock %}

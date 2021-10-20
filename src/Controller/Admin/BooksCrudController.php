@@ -25,7 +25,6 @@ class BooksCrudController extends AbstractCrudController
         return $assets;
     }
 
-    
     public function configureFields(string $pageName): iterable
     {
         return [

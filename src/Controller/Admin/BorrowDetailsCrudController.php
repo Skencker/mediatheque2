@@ -14,7 +14,6 @@ class BorrowDetailsCrudController extends AbstractCrudController
         return BorrowDetails::class;
     }
 
-    
     public function configureFields(string $pageName): iterable
     {
         return [

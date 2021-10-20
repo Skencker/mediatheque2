@@ -4,9 +4,6 @@
 
 {% form_theme form 'bootstrap_5_layout.html.twig' %}
 
-{# {% if app.user.valid == 0 %}  #}
- {# {{ render('inscription') }} #}
-{# {% else %} #}
 {% block content %}
     <style>
         body {
@@ -16,12 +13,10 @@
             background-position: center;
             height: 88vh;
         }
-
         .container {
             background: #FFFFFF;
             padding: 20px;
             margin-top: 10px;
-            
         }
     </style>
     <div class='container mt-5'>
@@ -41,9 +36,7 @@
                     {{ form_row(form.city) }}
                 </div>
             </div>
-       <p class="text-center">Ou avez-vous <a href="{{ path('app_login')}}"> déjà un compte </a> ? </p> 
+            <p class="text-center">Ou avez-vous <a href="{{ path('app_login')}}"> déjà un compte </a> ? </p> 
         {{ form_end(form) }}
-
-     </div>
-{# {% endif %} #}
+    </div>
 {% endblock %}

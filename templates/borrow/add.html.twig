@@ -4,16 +4,14 @@
 
 {% block nav %}
 {% endblock %}
-{% block content %}
-{% if app.user.valid == 0 %} 
-    {{ render('connexion') }}
-{% else %}
 
-    <div class="container d-flex flex-column align-items-center mt-5">
-        <h1> Votre emprunt est validé ! </h1> 
-    <a 
-    href="{{ path('books')}}" 
-    class="btn btn-block text-light mt-5" style="background:#5C636A"> Retour Catalogue </a>
-    </div>
-{% endif %}
+{% block content %}
+    {% if app.user.valid == 0 %} 
+        {{ render('connexion') }}
+    {% else %}
+        <div class="container d-flex flex-column align-items-center mt-5">
+            <h1> Votre emprunt est validé ! </h1> 
+            <a  href="{{ path('books')}}"  class="btn btn-block text-light mt-5" style="background:#5C636A"> Retour Catalogue </a>
+        </div>
+    {% endif %}
 {% endblock %}

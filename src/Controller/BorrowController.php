@@ -59,8 +59,7 @@ class BorrowController extends AbstractController
             $borrow->setUser($this->getUser());
             $borrow->setCreateAt($date);
             $borrow->setStatus(1);
-            
-            
+               
             $this->entityManager->persist($borrow);
             
             //enregitrer les detail de l'emprunt
@@ -76,15 +75,7 @@ class BorrowController extends AbstractController
                 $this->entityManager->persist($borrowDetails);
             }
 
-                $this->entityManager->flush();
-            
-            // if ( $borrow->setStatus(1)) {
-            //     $borrowDetails ->getBook($book['book']->setStatus(0));
-                // $this->entityManager->persist($borrow);
-                // $this->entityManager->persist($borrowDetails);
- 
-            // }
-            
+                $this->entityManager->flush();      
            
         }
         $cart->remove();
@@ -92,7 +83,5 @@ class BorrowController extends AbstractController
             // 'form' => $form->createView(),
             'cart' => $cart->getFull()
             ]);
-
-      
     }
 }
